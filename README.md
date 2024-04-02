@@ -29,6 +29,8 @@ Add `pinia` to the plugins section of your `.eslintrc` configuration file. You c
 }
 ```
 
+### Rule Configuration
+
 Then configure the rules you want to use under the rules section.
 
 ```json
@@ -53,7 +55,7 @@ To use the recommended configuration, extend it in your `.eslintrc` file:
 
 All recommend rules will be set to error by default. You can however disable some rules by setting turning them `off` in your `.eslintrc` file or by setting them to `warn` in your `.eslintrc`.
 
-#### all
+### all rules
 
 To use the all configuration, extend it in your `.eslintrc` file:
 
