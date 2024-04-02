@@ -70,14 +70,12 @@ To use the all configuration, extend it in your `.eslintrc` file:
 💼 Configurations enabled in.\
 ⚠️ Configurations set to warn in.\
 🌐 Set in the `all` configuration.\
-✅ Set in the `recommended` configuration.\
-🔧 Automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/user-guide/command-line-interface#--fix).\
-💡 Manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).
+✅ Set in the `recommended` configuration.
 
-| Name                                                                                         | Description                                                                                                          | 💼 | ⚠️ | 🔧 | 💡 |
-| :------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------- | :- | :- | :- | :- |
-| [prefer-use-store-naming-convention](docs/rules/prefer-use-store-naming-convention.md)       | Enforces the convention of naming stores with the prefix `use` followed by the store name and suffixed with `Store`. |    | 🌐 | 🔧 | 💡 |
-| [require-setup-store-properties-export](docs/rules/require-setup-store-properties-export.md) | In setup stores all state properties must be exported.                                                               | ✅  | 🌐 | 🔧 | 💡 |
+| Name                                                                                         | Description                                                                                                          | 💼 | ⚠️ |
+| :------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------- | :- | :- |
+| [prefer-use-store-naming-convention](docs/rules/prefer-use-store-naming-convention.md)       | Enforces the convention of naming stores with the prefix `use` followed by the store name and suffixed with `Store`. |    | 🌐 |
+| [require-setup-store-properties-export](docs/rules/require-setup-store-properties-export.md) | In setup stores all state properties must be exported.                                                               | ✅  | 🌐 |
 
 <!-- end auto-generated rules list -->
 

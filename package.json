@@ -48,7 +48,7 @@
 		"test:ci": "vitest run",
 		"test": "vitest",
 		"generate": "tsx scripts/generate.ts",
-		"update:eslint-docs": "npm run build && eslint-doc-generator --init-rule-docs",
+		"update:eslint-docs": "npm run build && eslint-doc-generator",
 		"tsc": "tsc --noEmit"
 	},
 	"devDependencies": {
