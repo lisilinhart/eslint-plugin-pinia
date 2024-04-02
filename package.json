@@ -1,6 +1,6 @@
 {
 	"name": "eslint-plugin-pinia",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"license": "MIT",
 	"description": "ESLint plugin for Pinia best practices",
 	"repository": {
@@ -64,8 +64,8 @@
 		"eslint-plugin-pinia": "file:.",
 		"eslint-plugin-unused-imports": "^3.1.0",
 		"eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.1.3",
-    "prettier": "^3.2.5",
+		"eslint-plugin-prettier": "^5.1.3",
+		"prettier": "^3.2.5",
 		"markdownlint-cli": "^0.39.0",
 		"ts-node": "^10.9.2",
 		"tsx": "^4.7.1",
