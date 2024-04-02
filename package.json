@@ -40,7 +40,7 @@
 		"lint:eslint-docs": "npm run build && eslint-doc-generator --check",
 		"lint:js": "eslint . --fix",
 		"lint": "concurrently --prefixColors auto \"npm:lint:*\"",
-		"release": "npm run build && bumpp package.json --commit --push --tag && pnpm publish",
+		"release": "npm run build && bumpp package.json --commit --push --tag && npm publish",
 		"stub": "unbuild --stub",
 		"test:ci": "vitest run",
 		"test": "vitest",
