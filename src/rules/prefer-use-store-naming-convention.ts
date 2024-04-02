@@ -47,7 +47,6 @@ export default createEslintRule<Options, MESSAGE_IDS>({
           node.parent.id.type === 'Identifier'
         ) {
           const { checkStoreNameMismatch } = options[0]
-          console.log(options)
           const uniqueId = node.arguments[0].value
           const expectedName = `use${uniqueId.charAt(0).toUpperCase()}${uniqueId.slice(1)}Store`
           const variableName = node.parent.id.name
