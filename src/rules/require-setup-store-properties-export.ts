@@ -17,7 +17,7 @@ export default createEslintRule<Options, MESSAGE_IDS>({
     messages: {
       noReturns:
         'All variables declared inside defineStore must be returned in the return statement.',
-      missingVariables: `Missing exports in return statement: {{variableNames}}`
+      missingVariables: 'Missing exports in return statement: {{variableNames}}'
     }
   },
   defaultOptions: [],
@@ -43,7 +43,7 @@ export default createEslintRule<Options, MESSAGE_IDS>({
 
           if (!returnStatement && declaredVariables.length > 0) {
             context.report({
-              node: node,
+              node,
               messageId: 'noReturns'
             })
             return

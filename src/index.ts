@@ -1,6 +1,9 @@
 import requireSetupStoreProps, {
   RULE_NAME as requireSetupStorePropsName
 } from './rules/require-setup-store-properties-export'
+import preferNamingConvention, {
+  RULE_NAME as preferNamingConventionName
+} from './rules/prefer-use-store-naming-convention'
 
 const createConfig = (rules: Record<string, string>) => ({
   plugins: ['pinia'],
@@ -13,7 +16,8 @@ const createConfig = (rules: Record<string, string>) => ({
 })
 
 const allRules = {
-  [requireSetupStorePropsName]: 'warn'
+  [requireSetupStorePropsName]: 'warn',
+  [preferNamingConventionName]: 'warn'
 }
 
 const recommended = {
@@ -22,7 +26,8 @@ const recommended = {
 
 export default {
   rules: {
-    [requireSetupStorePropsName]: requireSetupStoreProps
+    [requireSetupStorePropsName]: requireSetupStoreProps,
+    [preferNamingConventionName]: preferNamingConvention
   },
   configs: {
     all: createConfig(allRules),

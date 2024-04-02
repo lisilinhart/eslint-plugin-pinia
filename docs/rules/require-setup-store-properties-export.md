@@ -8,7 +8,7 @@
 
 ## Rule Details
 
-❌ Examples of **incorrect** code for this rule with `max: 1`:
+❌ Examples of **incorrect** code for this rule:
 
 ```js
 export const useCounterStore = defineStore('counter', () => {
