@@ -34,6 +34,9 @@
 		"LICENSE",
 		"README.md"
 	],
+	"publishConfig": {
+		"@lisilinhart:registry": "https://npm.pkg.github.com"
+	},
 	"scripts": {
 		"build": "unbuild",
 		"lint:md": "markdownlint \"**/*.md\" --fix",
