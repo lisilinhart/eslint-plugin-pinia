@@ -1,0 +1,14 @@
+{
+	"extends": [
+		"@veritem"
+	],
+	"rules": {
+		"indent": [
+			0,
+			"tab"
+		],
+		"no-case-declarations": 0,
+		"no-tabs": "off",
+		"vitest/unbound-method": "off"
+	}
+}
