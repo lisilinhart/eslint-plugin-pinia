@@ -1,7 +1,7 @@
 # eslint-plugin-pinia
 
 ![npm](https://img.shields.io/npm/v/eslint-plugin-pinia)
-[![ci](https://github.com/lisilinhart/eslint-plugin-pinia/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/lisilinhart/eslint-plugin-pinia/actions/workflows/ci.yml)
+[![test](https://github.com/lisilinhart/eslint-plugin-pinia/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/lisilinhart/eslint-plugin-pinia/actions/workflows/test.yml)
 
 Eslint plugin for vitest
 
