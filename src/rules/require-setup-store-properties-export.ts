@@ -11,8 +11,6 @@ export default createEslintRule<Options, MESSAGE_IDS>({
     docs: {
       description: 'In setup stores all state properties must be exported.'
     },
-    fixable: 'code',
-    hasSuggestions: true,
     schema: [],
     messages: {
       noReturns:

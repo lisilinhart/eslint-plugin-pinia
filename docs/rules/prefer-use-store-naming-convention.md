@@ -2,13 +2,11 @@
 
 ⚠️ This rule _warns_ in the 🌐 `all` config.
 
-🔧💡 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) and manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).
-
 <!-- end auto-generated rule header -->
 
 ## Options
 
-* `checkStoreNameMismatch`: If set to true (default), it checks if the name inside use'name'Store matches the unique identifier passed to `defineStore`. If set to false, it only checks if the store name starts with `use` and ends with `Store`.
+- `checkStoreNameMismatch`: If set to true (default), it checks if the name inside use'name'Store matches the unique identifier passed to `defineStore`. If set to false, it only checks if the store name starts with `use` and ends with `Store`.
   
 <!-- begin auto-generated rule options list -->
 

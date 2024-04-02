@@ -12,8 +12,6 @@ export default createEslintRule<Options, MESSAGE_IDS>({
       description:
         'Enforces the convention of naming stores with the prefix `use` followed by the store name and suffixed with `Store`.'
     },
-    fixable: 'code',
-    hasSuggestions: true,
     schema: [
       {
         type: 'object',
