@@ -3,7 +3,7 @@
 ![npm](https://img.shields.io/npm/v/eslint-plugin-pinia)
 [![test](https://github.com/lisilinhart/eslint-plugin-pinia/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/lisilinhart/eslint-plugin-pinia/actions/workflows/test.yml)
 
-Eslint plugin for vitest
+Eslint plugin that enforces some best practices for writing pinia stores
 
 ## Installation
 
