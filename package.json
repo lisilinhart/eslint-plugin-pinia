@@ -93,5 +93,8 @@
 	},
 	"dependencies": {
 		"@typescript-eslint/utils": "^7.5.0"
-	}
+	},
+	"release": {
+    "branches": ["main"]
+  }
 }

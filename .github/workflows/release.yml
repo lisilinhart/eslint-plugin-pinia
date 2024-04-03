@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - "v*"
+      - 'v*'
 
 jobs:
   release:
@@ -16,8 +16,13 @@ jobs:
         with:
           node-version: '20'
           registry-url: https://registry.npmjs.org/
-      - run: npm install
-      - run: npm run test --if-present
-      - run: npx conventional-github-releaser -p angular
+          cache: npm
+      - run: npm i
+      - run: npm run test:ci
+      - run: npm run test
+      - run: npm run build
+      - name: Release
         env:
-          CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release@latest
