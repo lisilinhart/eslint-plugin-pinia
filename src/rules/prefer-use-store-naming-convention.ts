@@ -56,7 +56,7 @@ export default createEslintRule<Options, MESSAGE_IDS>({
             !variableName.endsWith('Store')
           ) {
             context.report({
-              node: node.arguments[0],
+              node: node.parent,
               messageId: 'incorrectStoreNamingConvention'
             })
           }
