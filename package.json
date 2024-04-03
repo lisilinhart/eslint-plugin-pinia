@@ -1,6 +1,6 @@
 {
 	"name": "eslint-plugin-pinia",
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"license": "MIT",
 	"description": "ESLint plugin for Pinia best practices",
 	"repository": {
