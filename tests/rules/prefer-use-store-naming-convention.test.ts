@@ -5,11 +5,15 @@ import { ruleTester } from '../rule-tester'
 
 ruleTester.run(RULE_NAME, rule, {
   valid: [
-    `export const useCounterStore = defineStore('counter', () => {
+    `export const useCounter = defineStore('counter', () => {
       const count = ref(0)
       return { count }
     })`,
-    `export const useCounterStore = defineStore('Counter', () => {
+    `export const useCounter = defineStore('Counter', () => {
+      const count = ref(0)
+      return { count }
+    })`,
+    `export const useCounterStore = defineStore('someCounter', () => {
       const count = ref(0)
       return { count }
     })`
@@ -22,10 +26,7 @@ ruleTester.run(RULE_NAME, rule, {
       })`,
       errors: [
         {
-          messageId: 'incorrectStoreNamingConvention'
-        },
-        {
-          messageId: 'storeNameMismatch'
+          messageId: 'incorrectPrefix'
         }
       ]
     },
@@ -36,21 +37,7 @@ ruleTester.run(RULE_NAME, rule, {
       })`,
       errors: [
         {
-          messageId: 'incorrectStoreNamingConvention'
-        },
-        {
-          messageId: 'storeNameMismatch'
-        }
-      ]
-    },
-    {
-      code: `export const useCounterStore = defineStore('number', () => {
-        const count = ref(0)
-        return { count }
-      })`,
-      errors: [
-        {
-          messageId: 'storeNameMismatch'
+          messageId: 'incorrectPrefix'
         }
       ]
     }
@@ -58,16 +45,16 @@ ruleTester.run(RULE_NAME, rule, {
 })
 
 ruleTester.run(
-  RULE_NAME + ' with "checkStoreNameMismatch" option set to false',
+  RULE_NAME + ' with "checkStoreNameMismatch" option set to true',
   rule,
   {
     valid: [
       {
-        code: `export const useCounterStore = defineStore('number', () => {
+        code: `export const useCounter = defineStore('counter', () => {
           const count = ref(0)
           return { count }
         })`,
-        options: [{ checkStoreNameMismatch: false }]
+        options: [{ checkStoreNameMismatch: true }]
       }
     ],
     invalid: [
@@ -76,25 +63,83 @@ ruleTester.run(
           const count = ref(0)
           return { count }
         })`,
-        options: [{ checkStoreNameMismatch: false }],
+        options: [{ checkStoreNameMismatch: true }],
         errors: [
           {
-            messageId: 'incorrectStoreNamingConvention'
+            messageId: 'incorrectPrefix'
+          },
+          {
+            messageId: 'storeNameMismatch'
           }
         ]
       },
       {
-        code: `export const Counter = defineStore('counter', () => {
+        code: `export const useSomething = defineStore('counter', () => {
           const count = ref(0)
           return { count }
         })`,
-        options: [{ checkStoreNameMismatch: false }],
+        options: [{ checkStoreNameMismatch: true }],
         errors: [
           {
-            messageId: 'incorrectStoreNamingConvention'
+            messageId: 'storeNameMismatch'
           }
         ]
       }
     ]
   }
 )
+
+ruleTester.run(RULE_NAME + ' with "storeSuffix" option', rule, {
+  valid: [
+    {
+      code: `export const useCounterStore = defineStore('number', () => {
+          const count = ref(0)
+          return { count }
+        })`,
+      options: [{ storeSuffix: 'Store' }]
+    },
+    {
+      code: `export const useNumberService = defineStore('number', () => {
+          const count = ref(0)
+          return { count }
+        })`,
+      options: [{ storeSuffix: 'Service' }]
+    },
+    {
+      code: `export const useNumber = defineStore('number', () => {
+          const count = ref(0)
+          return { count }
+        })`,
+      options: [{ storeSuffix: '' }]
+    }
+  ],
+  invalid: [
+    {
+      code: `export const CounterStore = defineStore('number', () => {
+          const count = ref(0)
+          return { count }
+        })`,
+      options: [{ storeSuffix: 'Service' }],
+      errors: [
+        {
+          messageId: 'incorrectPrefix'
+        },
+        {
+          messageId: 'incorrectSuffix'
+        }
+      ]
+    },
+    {
+      code: `export const useCounterService = defineStore('counter', () => {
+          const count = ref(0)
+          return { count }
+        })`,
+      options: [{ storeSuffix: 'Store' }],
+      errors: [
+        {
+          messageId: 'incorrectSuffix'
+        }
+      ]
+    }
+  ]
+})

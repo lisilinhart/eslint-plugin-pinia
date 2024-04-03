@@ -1,8 +1,11 @@
 import { createEslintRule } from '../utils/rule-creator'
 
 export const RULE_NAME = 'prefer-use-store-naming-convention'
-export type MESSAGE_IDS = 'incorrectStoreNamingConvention' | 'storeNameMismatch'
-type Options = [{ checkStoreNameMismatch: boolean }]
+export type MESSAGE_IDS =
+  | 'incorrectPrefix'
+  | 'incorrectSuffix'
+  | 'storeNameMismatch'
+type Options = [{ checkStoreNameMismatch: boolean; storeSuffix: string }]
 
 export default createEslintRule<Options, MESSAGE_IDS>({
   name: RULE_NAME,
@@ -10,7 +13,7 @@ export default createEslintRule<Options, MESSAGE_IDS>({
     type: 'problem',
     docs: {
       description:
-        'Enforces the convention of naming stores with the prefix `use` followed by the store name and suffixed with `Store`.'
+        'Enforces the convention of naming stores with the prefix `use` followed by the store name.'
     },
     schema: [
       {
@@ -18,21 +21,27 @@ export default createEslintRule<Options, MESSAGE_IDS>({
         properties: {
           checkStoreNameMismatch: {
             type: 'boolean',
-            default: true
+            default: false
+          },
+          storeSuffix: {
+            type: 'string',
+            default: ''
           }
         }
       }
     ],
     messages: {
-      incorrectStoreNamingConvention:
-        'Store names should start with "use" followed by the store name and suffixed with "Store".',
+      incorrectPrefix:
+        'Store names should start with "use" followed by the store name.',
+      incorrectSuffix: 'Store names should end with "{{ suffixName }}".',
       storeNameMismatch:
         'The "{{name}}" variable naming does not match the unique identifier "{{id}}" naming for the store.'
     }
   },
   defaultOptions: [
     {
-      checkStoreNameMismatch: true
+      checkStoreNameMismatch: false,
+      storeSuffix: ''
     }
   ],
   create: (context, options) => {
@@ -46,18 +55,26 @@ export default createEslintRule<Options, MESSAGE_IDS>({
           typeof node.arguments[0].value === 'string' &&
           node.parent.id.type === 'Identifier'
         ) {
-          const { checkStoreNameMismatch } = options[0]
+          const { checkStoreNameMismatch, storeSuffix } = options[0]
           const uniqueId = node.arguments[0].value
-          const expectedName = `use${uniqueId.charAt(0).toUpperCase()}${uniqueId.slice(1)}Store`
+          const hasSuffixConfigured = storeSuffix.length > 0
+          const expectedName = `use${uniqueId.charAt(0).toUpperCase()}${uniqueId.slice(1)}${storeSuffix}`
           const variableName = node.parent.id.name
 
-          if (
-            !variableName.startsWith('use') ||
-            !variableName.endsWith('Store')
-          ) {
+          if (!variableName.startsWith('use')) {
             context.report({
               node: node.parent,
-              messageId: 'incorrectStoreNamingConvention'
+              messageId: 'incorrectPrefix'
+            })
+          }
+
+          if (hasSuffixConfigured && !variableName.endsWith(storeSuffix)) {
+            context.report({
+              node: node.parent,
+              messageId: 'incorrectSuffix',
+              data: {
+                suffixName: storeSuffix
+              }
             })
           }
 
