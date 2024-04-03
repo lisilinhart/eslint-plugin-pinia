@@ -1,7 +1,7 @@
 import { createEslintRule } from '../utils/rule-creator'
 
 export const RULE_NAME = 'require-setup-store-properties-export'
-export type MESSAGE_IDS = 'missingVariables' | 'noReturns'
+export type MESSAGE_IDS = 'missingVariables'
 type Options = []
 
 export default createEslintRule<Options, MESSAGE_IDS>({
@@ -13,9 +13,8 @@ export default createEslintRule<Options, MESSAGE_IDS>({
     },
     schema: [],
     messages: {
-      noReturns:
-        'All variables declared inside defineStore must be returned in the return statement.',
-      missingVariables: 'Missing exports in return statement: {{variableNames}}'
+      missingVariables:
+        'Missing state variable exports in return statement: {{variableNames}}'
     }
   },
   defaultOptions: [],
@@ -28,21 +27,34 @@ export default createEslintRule<Options, MESSAGE_IDS>({
           node.arguments.length === 2 &&
           node.arguments[1].type !== 'ObjectExpression'
         ) {
+          function isRefOrReactiveCall(node) {
+            return (
+              node.type === 'CallExpression' &&
+              node.callee.type === 'Identifier' &&
+              (node.callee.name === 'ref' || node.callee.name === 'reactive')
+            )
+          }
+
           const returnStatement = node.arguments[1].body.body.find(
             (statement) => statement.type === 'ReturnStatement'
           )
 
-          const declaredVariables = node.arguments[1].body.body
+          const declaredStateVariables = node.arguments[1].body.body
             .filter((statement) => statement.type === 'VariableDeclaration')
             .map((declaration) =>
-              declaration.declarations.map((declarator) => declarator.id.name)
+              declaration.declarations
+                .filter((declarator) => isRefOrReactiveCall(declarator.init))
+                .map((declarator) => declarator.id.name)
             )
             .flat()
 
-          if (!returnStatement && declaredVariables.length > 0) {
+          if (!returnStatement && declaredStateVariables.length > 0) {
             context.report({
               node,
-              messageId: 'noReturns'
+              messageId: 'missingVariables',
+              data: {
+                variableNames: declaredStateVariables.join(', ')
+              }
             })
             return
           }
@@ -51,7 +63,7 @@ export default createEslintRule<Options, MESSAGE_IDS>({
             (property) => property.key.name
           )
 
-          const missingVariables = declaredVariables.filter(
+          const missingVariables = declaredStateVariables.filter(
             (variable) => !returnedVariables.includes(variable)
           )
 

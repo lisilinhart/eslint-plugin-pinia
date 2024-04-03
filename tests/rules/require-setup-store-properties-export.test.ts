@@ -7,13 +7,14 @@ ruleTester.run(RULE_NAME, rule, {
   valid: [
     `export const useCounterStore = defineStore('counter', () => {
       const count = ref(0)
-      const name = ref('Eduardo')
+      const something = 'Something'
+      const obj = reactive({ count })
       const doubleCount = computed(() => count.value * 2)
       function increment() {
         count.value++
       }
     
-      return { count, name, doubleCount, increment }
+      return { count, something, obj }
     })`,
     `export const useCounterStore = defineStore('counter', {
       state: () => ({ count: 0, name: 'Eduardo' }),
@@ -25,24 +26,36 @@ ruleTester.run(RULE_NAME, rule, {
           this.count++
         },
       },
+    })`,
+    `export const useCounterStore = defineStore('counter', () => {
+      const count = ref(0)
+      const something = 'Something'
+      const obj = reactive({ count })
+      const doubleCount = computed(() => count.value * 2)
+      function increment() {
+        count.value++
+      }
+    
+      return { count, something, obj, doubleCount, increment }
     })`
   ],
   invalid: [
     {
       code: `export const useCounterStore = defineStore('counter', () => {
         const count = ref(0)
-        const name = ref('Eduardo')
+        const something = 'Something'
+        const obj = reactive({ count })
         const doubleCount = computed(() => count.value * 2)
         function increment() {
           count.value++
         }
       
-        return { doubleCount, increment }
+        return { increment }
       })`,
       errors: [
         {
           messageId: 'missingVariables',
-          data: { variableNames: 'count, name' }
+          data: { variableNames: 'count, obj' }
         }
       ]
     },
@@ -57,7 +70,8 @@ ruleTester.run(RULE_NAME, rule, {
       })`,
       errors: [
         {
-          messageId: 'noReturns'
+          messageId: 'missingVariables',
+          data: { variableNames: 'count, name' }
         }
       ]
     }
