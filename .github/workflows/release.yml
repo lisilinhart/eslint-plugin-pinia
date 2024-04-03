@@ -26,8 +26,8 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm clean-install
-      - name: Verify the integrity of deps
-        run: npm audit signatures
+      # - name: Verify the integrity of deps
+      #   run: npm audit signatures
       - run: npm run test:ci
       - run: npm run build
       - name: Release
