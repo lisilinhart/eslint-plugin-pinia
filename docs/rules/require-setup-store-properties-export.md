@@ -21,16 +21,24 @@ export const useCounterStore = defineStore('counter', () => {
 
 ```
 
+```js
+export const useCounterStore = defineStore('counter', () => {
+  const count = ref(0)
+})
+
+```
+
 ✅ Examples of **correct** code for this rule:
 
 ```js
 export const useCounterStore = defineStore('counter', () => {
   const count = ref(0)
+  const obj = reactive({ count })
   const doubleCount = computed(() => count.value * 2)
   function increment() {
     count.value++
   }
 
-  return { cound, doubleCount, increment }
+  return { count, obj }
 })
 ```

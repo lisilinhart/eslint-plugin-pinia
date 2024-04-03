@@ -7,7 +7,7 @@
 ## Options
 
 - `checkStoreNameMismatch`: If set to true (default), it checks if the name inside use'name'Store matches the unique identifier passed to `defineStore`. If set to false, it only checks if the store name starts with `use` and ends with `Store`.
-- `storeSuffix`: Can be configured to enforce the ending names of your store names. For example if it's configured to `Store`, it would warn if the store is not ending with the suffix, like `useNumberStore` would be valid, but `useNumber` would be invalid. 
+- `storeSuffix`: Can be configured to enforce the ending names of your store names. For example if it's configured to `Store`, it would warn if the store is not ending with the suffix, like `useNumberStore` would be valid, but `useNumber` would be invalid.
   
 <!-- begin auto-generated rule options list -->
 
