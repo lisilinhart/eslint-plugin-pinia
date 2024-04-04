@@ -22,7 +22,7 @@ const createConfig = (rules: Record<string, string>) => ({
 const allRules = {
   [requireSetupStorePropsName]: 'warn',
   [preferNamingConventionName]: 'warn',
-  [preferSingleStoreName]: 'warn'
+  [preferSingleStoreName]: 'off'
 }
 
 const recommended = {

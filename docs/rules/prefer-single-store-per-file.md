@@ -1,6 +1,6 @@
 # Encourages defining each store in a separate file (`pinia/prefer-single-store-per-file`)
 
-⚠️ This rule _warns_ in the 🌐 `all` config.
+🚫 This rule is _disabled_ in the 🌐 `all` config.
 
 <!-- end auto-generated rule header -->
 
