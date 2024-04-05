@@ -6,6 +6,8 @@ import { ruleTester } from '../rule-tester'
 ruleTester.run(RULE_NAME, rule, {
   valid: [
     `export const useCounterStore = defineStore('counter', () => {
+    })`,
+    `export const useCounterStore = defineStore('counter', () => {
       const count = ref(0)
       const something = 'Something'
       const obj = reactive({ count })
