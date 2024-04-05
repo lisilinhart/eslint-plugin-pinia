@@ -59,9 +59,11 @@ export default createEslintRule<Options, MESSAGE_IDS>({
             return
           }
 
-          const returnedVariables = returnStatement.argument.properties.map(
-            (property) => property.key.name
-          )
+          const returnedVariables = returnStatement
+            ? returnStatement.argument.properties.map(
+                (property) => property.key.name
+              )
+            : []
 
           const missingVariables = declaredStateVariables.filter(
             (variable) => !returnedVariables.includes(variable)
