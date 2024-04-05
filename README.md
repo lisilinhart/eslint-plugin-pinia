@@ -82,6 +82,10 @@ To use the all configuration, extend it in your `.eslintrc` file:
 
 <!-- end auto-generated rules list -->
 
+## Contributing
+
+Please check the [Contributing](https://github.com/lisilinhart/eslint-plugin-pinia/blob/main/.github/CONTRIBUTING.md) file
+
 ## Credits
 
 - [eslint-plugin-vitest](https://github.com/veritem/eslint-plugin-vitest) The core repository structure came from this eslint plugin
