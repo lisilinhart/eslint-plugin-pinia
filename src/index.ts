@@ -33,7 +33,7 @@ const allRules = {
   [preferNamingConventionName]: 'warn',
   [preferSingleStoreName]: 'off',
   [noReturnGlobalPropertiesName]: 'warn',
-  [noDuplicateStoreIdsName]: 'error'
+  [noDuplicateStoreIdsName]: 'warn'
 }
 
 const recommended = {
