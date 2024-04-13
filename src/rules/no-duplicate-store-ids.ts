@@ -16,7 +16,7 @@ export default createEslintRule<Options, MESSAGE_IDS>({
     },
     schema: [],
     messages: {
-      duplicatedStoreIds: 'No duplicated store ids allowed.'
+      duplicatedStoreIds: 'No duplicated store ids allowed: {{storeId}}'
     }
   },
   defaultOptions: [],
@@ -35,8 +35,11 @@ export default createEslintRule<Options, MESSAGE_IDS>({
 
         if (usingStoreIds.has(value)) {
           context.report({
-            node,
-            messageId: 'duplicatedStoreIds'
+            node: storeId,
+            messageId: 'duplicatedStoreIds',
+            data: {
+              storeId: storeId.value
+            }
           })
         } else {
           usingStoreIds.add(value)
