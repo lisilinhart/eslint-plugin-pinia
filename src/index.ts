@@ -14,6 +14,10 @@ import noReturnGlobalProperties, {
   RULE_NAME as noReturnGlobalPropertiesName
 } from './rules/no-return-global-properties'
 
+import noDuplicateStoreIds, {
+  RULE_NAME as noDuplicateStoreIdsName
+} from './rules/no-duplicate-store-ids'
+
 const createConfig = (rules: Record<string, string>) => ({
   plugins: ['pinia'],
   rules: Object.keys(rules).reduce((acc, ruleName) => {
@@ -28,12 +32,14 @@ const allRules = {
   [requireSetupStorePropsName]: 'warn',
   [preferNamingConventionName]: 'warn',
   [preferSingleStoreName]: 'off',
-  [noReturnGlobalPropertiesName]: 'warn'
+  [noReturnGlobalPropertiesName]: 'warn',
+  [noDuplicateStoreIdsName]: 'warn'
 }
 
 const recommended = {
   [requireSetupStorePropsName]: 'error',
-  [noReturnGlobalPropertiesName]: 'error'
+  [noReturnGlobalPropertiesName]: 'error',
+  [noDuplicateStoreIdsName]: 'error'
 }
 
 export default {
@@ -41,7 +47,8 @@ export default {
     [requireSetupStorePropsName]: requireSetupStoreProps,
     [preferNamingConventionName]: preferNamingConvention,
     [preferSingleStoreName]: preferSingleStore,
-    [noReturnGlobalPropertiesName]: noReturnGlobalProperties
+    [noReturnGlobalPropertiesName]: noReturnGlobalProperties,
+    [noDuplicateStoreIdsName]: noDuplicateStoreIds
   },
   configs: {
     all: createConfig(allRules),
