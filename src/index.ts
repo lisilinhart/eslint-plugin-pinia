@@ -2,6 +2,10 @@ import requireSetupStoreProps, {
   RULE_NAME as requireSetupStorePropsName
 } from './rules/require-setup-store-properties-export'
 
+import neverExportInitializedStore, {
+  RULE_NAME as neverExportInitializedStoreName
+} from './rules/never-export-initialized-store'
+
 import preferNamingConvention, {
   RULE_NAME as preferNamingConventionName
 } from './rules/prefer-use-store-naming-convention'
@@ -30,6 +34,7 @@ const createConfig = (rules: Record<string, string>) => ({
 
 const allRules = {
   [requireSetupStorePropsName]: 'warn',
+  [neverExportInitializedStoreName]: 'error',
   [preferNamingConventionName]: 'warn',
   [preferSingleStoreName]: 'off',
   [noReturnGlobalPropertiesName]: 'warn',
@@ -39,12 +44,14 @@ const allRules = {
 const recommended = {
   [requireSetupStorePropsName]: 'error',
   [noReturnGlobalPropertiesName]: 'error',
-  [noDuplicateStoreIdsName]: 'error'
+  [noDuplicateStoreIdsName]: 'error',
+  [neverExportInitializedStoreName]: 'error'
 }
 
 export default {
   rules: {
     [requireSetupStorePropsName]: requireSetupStoreProps,
+    [neverExportInitializedStoreName]: neverExportInitializedStore,
     [preferNamingConventionName]: preferNamingConvention,
     [preferSingleStoreName]: preferSingleStore,
     [noReturnGlobalPropertiesName]: noReturnGlobalProperties,
