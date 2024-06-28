@@ -14,14 +14,14 @@ ruleTester.run(RULE_NAME, rule, {
   ],
   invalid: [
     {
-      code: `import { defineStore } from 'pinia'
-      const useCounterStore = defineStore('counter', () => {
-        const count = ref(0)
-        return { count }
-      })
+      code: `import { defineStore } from 'pinia';
 
-      const useCounter2Store = defineStore('counter', () => {
-      })`,
+      export const useCounterStore = defineStore('counter', () => {
+        const count = ref(0);
+        return { count };
+      });
+      
+      export const foo = useCounterStore();`,
       errors: [
         {
           messageId: 'namedInitialization'
