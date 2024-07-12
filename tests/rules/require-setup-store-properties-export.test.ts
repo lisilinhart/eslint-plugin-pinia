@@ -39,7 +39,17 @@ ruleTester.run(RULE_NAME, rule, {
       }
     
       return { count, something, obj, doubleCount, increment }
-    })`
+    })`,
+    // https://github.com/lisilinhart/eslint-plugin-pinia/issues/52
+    `export const useRouteScrollBehaviorStore = defineStore('routeScrollBehavior', () => {
+      const scrollBehavior = ref<RouterScrollBehavior>();
+      const set = (callback: RouterScrollBehavior) => {
+        scrollBehavior.value = callback;
+        onUnmounted(() => { scrollBehavior.value = undefined });
+      };
+
+      return { get: scrollBehavior, set };
+    });`
   ],
   invalid: [
     {
