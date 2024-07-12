@@ -60,7 +60,7 @@ export default createEslintRule<Options, MESSAGE_IDS>({
 
           const returnedVariables = returnStatement?.argument?.type === AST_NODE_TYPES.ObjectExpression
             ? returnStatement.argument.properties.flatMap(
-                (property) => property.type === AST_NODE_TYPES.Property ? [getPropertyName(property)] : []
+                (property) => property.type === AST_NODE_TYPES.Property && property.value.type === AST_NODE_TYPES.Identifier ? [property.value.name] : []
               )
             : []
 
