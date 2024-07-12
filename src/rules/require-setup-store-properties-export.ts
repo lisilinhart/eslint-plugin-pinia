@@ -61,7 +61,7 @@ export default createEslintRule<Options, MESSAGE_IDS>({
 
           const returnedVariables = returnStatement
             ? returnStatement.argument.properties.map(
-                (property) => property.key.name
+                (property) => property.value.name
               )
             : []
 
