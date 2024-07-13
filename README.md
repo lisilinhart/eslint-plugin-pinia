@@ -21,12 +21,24 @@ npm install eslint-plugin-pinia --save-dev
 
 ## Usage
 
-Add `pinia` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
+Add `pinia` to the plugins section of your `.eslintrc` or `eslint.config.js` configuration file. You can omit the `eslint-plugin-` prefix:
 
 ```json
+// .eslintrc [Legacy Config]
 {
   "plugins": ["pinia"]
 }
+```
+
+```js
+// eslint.config.js
+import pinia from 'eslint-plugin-pinia'
+
+export default [
+  plugins: {
+    pinia
+  }
+]
 ```
 
 ### Rule Configuration
@@ -34,6 +46,7 @@ Add `pinia` to the plugins section of your `.eslintrc` configuration file. You c
 Then configure the rules you want to use under the rules section.
 
 ```json
+// .eslintrc [Legacy Config]
 {
   "rules": {
     "pinia/require-export-define-store": [
@@ -43,26 +56,62 @@ Then configure the rules you want to use under the rules section.
 }
 ```
 
+```js
+// eslint.config.js
+import pinia from 'eslint-plugin-pinia'
+
+export default [
+  {
+    plugin: {
+      pinia
+    },
+    rules: {
+      "pinia/require-export-define-store": ["warn"]
+    }
+  }
+]
+```
+
 ### Recommended
 
-To use the recommended configuration, extend it in your `.eslintrc` file:
+To use the recommended configuration, extend it in your `.eslintrc` or `eslint.config.js` file:
 
 ```json
+// .eslintrc [Legacy Config]
 {
   "extends": ["plugin:pinia/recommended"]
 }
 ```
 
-All recommend rules will be set to error by default. You can however disable some rules by setting turning them `off` in your `.eslintrc` file or by setting them to `warn` in your `.eslintrc`.
+```js
+// eslint.config.js
+import pinia from 'eslint-plugin-pinia'
+
+export default [
+  pinia.configs["recommended-flat"],
+]
+```
+
+All recommend rules will be set to error by default. You can however disable some rules by setting turning them `off` in your configuration file or by setting them to `warn` in your configuration file.
 
 ### all rules
 
-To use the all configuration, extend it in your `.eslintrc` file:
+To use the all configuration, extend it in your `.eslintrc` or `eslint.config.js` file:
 
 ```json
+// .eslintrc [Legacy Config]
 {
   "extends": ["plugin:pinia/all"]
 }
+```
+
+```js
+// eslint.config.js
+import pinia from 'eslint-plugin-pinia'
+
+export default [
+  pinia.configs["all-flat"],
+]
 ```
 
 ## Rules
