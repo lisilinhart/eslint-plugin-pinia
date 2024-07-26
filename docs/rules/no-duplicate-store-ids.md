@@ -4,6 +4,12 @@
 
 <!-- end auto-generated rule header -->
 
+> [!IMPORTANT]
+>
+> Since ESLint is based on a single file check and the store IDs are not associated with each other.
+>
+> This rule may not prompt an error under the VSCode plugin, but it works fine in the CLI.
+
 ## Rule Details
 
 ❌ Examples of **incorrect** code for this rule:

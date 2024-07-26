@@ -13,7 +13,6 @@
 		"experimentalDecorators": true
 	},
 	"include": [
-		"file.ts",
-		"class.ts"
+		"*.ts",
 	]
 }

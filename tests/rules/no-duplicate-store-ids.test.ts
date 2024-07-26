@@ -33,9 +33,6 @@ const useCounter2Store = defineStore('counter', () => {
       errors: [
         {
           messageId: 'duplicatedStoreIds'
-        },
-        {
-          messageId: 'duplicatedStoreIds'
         }
       ]
     }
