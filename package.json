@@ -85,15 +85,13 @@
 		"node": "14.x || >= 16"
 	},
 	"peerDependencies": {
-		"eslint": ">=8.0.0"
+		"eslint": ">=8.0.0",
+		"@typescript-eslint/utils": ">= 7.5 || 8.0.1"
 	},
 	"peerDependenciesMeta": {
-		"@typescript-eslint/eslint-plugin": {
+		"@typescript-eslint/utils": {
 			"optional": true
 		}
-	},
-	"dependencies": {
-		"@typescript-eslint/utils": "^7.5.0"
 	},
 	"release": {
 		"branches": [
