@@ -39,6 +39,7 @@
 	},
 	"scripts": {
 		"build": "unbuild",
+		"update": "tsx scripts/update",
 		"lint:md": "markdownlint \"**/*.md\" --fix",
 		"lint:eslint-docs": "npm run build && eslint-doc-generator --check",
 		"lint:js": "eslint . --fix",

@@ -1,5 +1,5 @@
-import { createEslintRule } from '../utils/rule-creator'
 import { AST_NODE_TYPES } from '@typescript-eslint/utils'
+import { createEslintRule } from '../utils/rule-creator'
 
 export const RULE_NAME = 'no-duplicate-store-ids'
 export type MESSAGE_IDS = 'duplicatedStoreIds'
