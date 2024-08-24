@@ -59,7 +59,7 @@
 		"@commitlint/cli": "^19.2.1",
 		"@commitlint/config-conventional": "^19.1.0",
 		"@types/mocha": "^10.0.6",
-		"@types/node": "^20.12.2",
+		"@types/node": "^22.5.0",
 		"@typescript-eslint/eslint-plugin": "^7.5.0",
 		"@typescript-eslint/rule-tester": "^7.5.0",
 		"@veritem/eslint-config": "^0.0.11",
