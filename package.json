@@ -39,6 +39,7 @@
 	},
 	"scripts": {
 		"build": "unbuild",
+		"update": "tsx scripts/update",
 		"lint:md": "markdownlint \"**/*.md\" --fix",
 		"lint:eslint-docs": "npm run build && eslint-doc-generator --check",
 		"lint:js": "eslint . --fix",
@@ -58,7 +59,7 @@
 		"@commitlint/cli": "^19.2.1",
 		"@commitlint/config-conventional": "^19.1.0",
 		"@types/mocha": "^10.0.6",
-		"@types/node": "^20.12.2",
+		"@types/node": "^22.5.0",
 		"@typescript-eslint/eslint-plugin": "^7.5.0",
 		"@typescript-eslint/rule-tester": "^7.5.0",
 		"@veritem/eslint-config": "^0.0.11",
@@ -74,12 +75,12 @@
 		"eslint-plugin-unused-imports": "^3.1.0",
 		"execa": "^9.3.0",
 		"husky": "^9.0.11",
-		"markdownlint-cli": "^0.39.0",
+		"markdownlint-cli": "^0.41.0",
 		"pinia": "^2.1.7",
 		"prettier": "^3.2.5",
 		"ts-node": "^10.9.2",
 		"tsx": "^4.7.1",
-		"typescript": "^5.4.3",
+		"typescript": "^5.5.3",
 		"unbuild": "^2.0.0",
 		"vitest": "^1.4.0"
 	},
@@ -87,15 +88,13 @@
 		"node": "14.x || >= 16"
 	},
 	"peerDependencies": {
-		"eslint": ">=8.0.0"
+		"eslint": ">=8.0.0",
+		"@typescript-eslint/utils": ">= 7.5 || 8.0.1"
 	},
 	"peerDependenciesMeta": {
-		"@typescript-eslint/eslint-plugin": {
+		"@typescript-eslint/utils": {
 			"optional": true
 		}
-	},
-	"dependencies": {
-		"@typescript-eslint/utils": "^7.5.0"
 	},
 	"release": {
 		"branches": [

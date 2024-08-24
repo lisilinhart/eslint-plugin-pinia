@@ -1,4 +1,7 @@
+import { AST_NODE_TYPES, TSESTree } from '@typescript-eslint/utils'
 import { createEslintRule } from '../utils/rule-creator'
+import { getPropertyName, isIdentifier } from '@typescript-eslint/utils/ast-utils'
+import { isRefOrReactiveCall } from '../utils/ast-utils'
 
 export const RULE_NAME = 'require-setup-store-properties-export'
 export type MESSAGE_IDS = 'missingVariables'
@@ -22,46 +25,42 @@ export default createEslintRule<Options, MESSAGE_IDS>({
     return {
       CallExpression(node) {
         if (
-          node.callee.type === 'Identifier' &&
+          node.callee.type === AST_NODE_TYPES.Identifier &&
           node.callee.name === 'defineStore' &&
           node.arguments.length === 2 &&
-          node.arguments[1].type !== 'ObjectExpression'
+          node.arguments[1].type !== AST_NODE_TYPES.ObjectExpression
         ) {
-          function isRefOrReactiveCall(node) {
-            return (
-              node.type === 'CallExpression' &&
-              node.callee.type === 'Identifier' &&
-              (node.callee.name === 'ref' || node.callee.name === 'reactive')
-            )
-          }
+          const arrowFunc = node.arguments[1] as TSESTree.ArrowFunctionExpression
 
-          const returnStatement = node.arguments[1].body.body.find(
-            (statement) => statement.type === 'ReturnStatement'
-          )
+          if (arrowFunc.body.type !== AST_NODE_TYPES.BlockStatement)
+            return
 
-          const declaredStateVariables = node.arguments[1].body.body
-            .filter((statement) => statement.type === 'VariableDeclaration')
-            .map((declaration) =>
-              declaration.declarations
-                .filter((declarator) => isRefOrReactiveCall(declarator.init))
-                .map((declarator) => declarator.id.name)
-            )
-            .flat()
+          const declaredStateVariables = arrowFunc.body.body
+            .filter(({ type }) => type === AST_NODE_TYPES.VariableDeclaration)
+            .flatMap((declaration) => {
+              return (declaration as TSESTree.VariableDeclaration).declarations
+                .filter(({ init, id }) => isRefOrReactiveCall(init) && isIdentifier(id))
+                .map(({ id }) => (id as TSESTree.Identifier).name)
+            })
 
-          if (!returnStatement && declaredStateVariables.length > 0) {
-            context.report({
+          if (declaredStateVariables.length <= 0)
+            return
+
+          const returnStatement = arrowFunc.body.body.find(({ type }) => type === AST_NODE_TYPES.ReturnStatement) as TSESTree.ReturnStatement | null
+
+          if (!returnStatement) {
+            return context.report({
               node,
               messageId: 'missingVariables',
               data: {
                 variableNames: declaredStateVariables.join(', ')
               }
             })
-            return
           }
 
-          const returnedVariables = returnStatement
-            ? returnStatement.argument.properties.map(
-                (property) => property.key.name
+          const returnedVariables = returnStatement?.argument?.type === AST_NODE_TYPES.ObjectExpression
+            ? returnStatement.argument.properties.flatMap(
+                (property) => property.type === AST_NODE_TYPES.Property && property.value.type === AST_NODE_TYPES.Identifier ? [property.value.name] : []
               )
             : []
 
