@@ -4,7 +4,7 @@ import { RULE_NAME as preferNamingConventionName } from './rules/prefer-use-stor
 import { RULE_NAME as preferSingleStoreName } from './rules/prefer-single-store-per-file'
 import { RULE_NAME as noReturnGlobalPropertiesName } from './rules/no-return-global-properties'
 import { RULE_NAME as noDuplicateStoreIdsName } from './rules/no-duplicate-store-ids'
-import rules from './rules'
+import rules from './rules/index'
 
 const plugin = {
   rules
@@ -28,12 +28,15 @@ const recommended = {
 
 function createConfig<T extends Record<string, any>>(_rules: T, flat = false) {
   const name = 'pinia'
-  const rules: Record<`pinia/${string}`, string> = Object.keys(_rules).reduce((acc, ruleName) => {
-    return {
-      ...acc,
-      [`${name}/${ruleName}`]: rules[ruleName]
-    }
-  }, {})
+  const rules: Record<`pinia/${string}`, string> = Object.keys(_rules).reduce(
+    (acc, ruleName) => {
+      return {
+        ...acc,
+        [`${name}/${ruleName}`]: rules[ruleName]
+      }
+    },
+    {}
+  )
   if (flat) {
     return {
       plugins: {
@@ -49,7 +52,7 @@ function createConfig<T extends Record<string, any>>(_rules: T, flat = false) {
   }
 }
 
-export const configs = {
+const configs = {
   all: createConfig(allRules),
   recommended: createConfig(recommended),
   'all-flat': createConfig(allRules, true),
@@ -58,5 +61,5 @@ export const configs = {
 
 export default {
   ...plugin,
-  configs,
+  configs
 }
