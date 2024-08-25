@@ -1,7 +1,5 @@
 # Encourages defining each store in a separate file (`pinia/prefer-single-store-per-file`)
 
-🚫 This rule is _disabled_ in the 🌐 `all` config.
-
 <!-- end auto-generated rule header -->
 
 Here's the documentation for the `prefer-single-store-per-file` rule:
