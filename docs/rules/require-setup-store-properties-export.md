@@ -1,5 +1,7 @@
 # In setup stores all state properties must be exported (`pinia/require-setup-store-properties-export`)
 
+💼⚠️ This rule is enabled in the following configs: ✅ `recommended`, `recommended-flat`. This rule _warns_ in the following configs: 🌐 `all`, `all-flat`.
+
 <!-- end auto-generated rule header -->
 
 ## Rule Details
