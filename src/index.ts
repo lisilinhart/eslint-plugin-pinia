@@ -12,7 +12,7 @@ const plugin = {
 }
 
 const allRules = {
-  [neverExportInitializedStoreName]: 'error',
+  [neverExportInitializedStoreName]: 'warn',
   [noDuplicateStoreIdsName]: 'warn',
   [noReturnGlobalPropertiesName]: 'warn',
   [noStoreToRefs]: 'warn',
@@ -26,6 +26,7 @@ const recommended = {
   [noDuplicateStoreIdsName]: 'error',
   [noReturnGlobalPropertiesName]: 'error',
   [noStoreToRefs]: 'error',
+  [preferNamingConventionName]: 'warn',
   [requireSetupStorePropsName]: 'error'
 }
 
@@ -34,26 +35,25 @@ function createConfig<T extends Record<string, unknown>>(
   flat = false
 ) {
   const name = 'pinia'
-  const rules: Record<`pinia/${string}`, string> = Object.keys(_rules).reduce(
-    (acc, ruleName) => {
-      return {
-        ...acc,
-        [`${name}/${ruleName}`]: rules[ruleName]
-      }
-    },
-    {}
-  )
+  const constructedRules: Record<`pinia/${string}`, string> = Object.keys(
+    _rules
+  ).reduce((acc, ruleName) => {
+    return {
+      ...acc,
+      [`${name}/${ruleName}`]: rules[ruleName]
+    }
+  }, {})
   if (flat) {
     return {
       plugins: {
         [name]: plugin
       },
-      rules
+      rules: constructedRules
     }
   } else {
     return {
       plugins: [name],
-      rules
+      rules: constructedRules
     }
   }
 }

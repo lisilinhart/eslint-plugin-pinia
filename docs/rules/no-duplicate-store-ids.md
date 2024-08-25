@@ -1,7 +1,5 @@
 # Disallow duplicate store ids (`pinia/no-duplicate-store-ids`)
 
-💼⚠️ This rule is enabled in the ✅ `recommended` config. This rule _warns_ in the 🌐 `all` config.
-
 <!-- end auto-generated rule header -->
 
 > [!IMPORTANT]

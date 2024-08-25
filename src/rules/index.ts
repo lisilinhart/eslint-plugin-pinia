@@ -12,5 +12,5 @@ export default {
   [noReturnGlobalPropertiesName]: noReturnGlobalProperties,
   [preferSingleStorePerFileName]: preferSingleStorePerFile,
   [preferUseStoreNamingConventionName]: preferUseStoreNamingConvention,
-  [requireSetupStorePropertiesExportName]: requireSetupStorePropertiesExport
+  [requireSetupStorePropertiesExportName]: requireSetupStorePropertiesExport,
 }
