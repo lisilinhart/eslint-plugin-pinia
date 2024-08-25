@@ -1,6 +1,6 @@
 import { AST_NODE_TYPES, TSESTree } from '@typescript-eslint/utils'
+import { isIdentifier } from '@typescript-eslint/utils/ast-utils'
 import { createEslintRule } from '../utils/rule-creator'
-import { getPropertyName, isIdentifier } from '@typescript-eslint/utils/ast-utils'
 import { isRefOrReactiveCall } from '../utils/ast-utils'
 
 export const RULE_NAME = 'require-setup-store-properties-export'
