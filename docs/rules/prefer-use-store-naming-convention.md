@@ -1,6 +1,6 @@
 # Enforces the convention of naming stores with the prefix `use` followed by the store name (`pinia/prefer-use-store-naming-convention`)
 
-⚠️ This rule _warns_ in the following configs: 🌐 `all`, `all-flat`, ✅ `recommended`, `recommended-flat`.
+⚠️ This rule _warns_ in the following configs: 🌐 `all`, 🌐 `all-flat`, ✅ `recommended`, ✅ `recommended-flat`.
 
 <!-- end auto-generated rule header -->
 

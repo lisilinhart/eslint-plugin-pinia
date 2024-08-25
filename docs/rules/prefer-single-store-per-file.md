@@ -1,6 +1,6 @@
 # Encourages defining each store in a separate file (`pinia/prefer-single-store-per-file`)
 
-🚫 This rule is _disabled_ in the following configs: 🌐 `all`, `all-flat`.
+🚫 This rule is _disabled_ in the following configs: 🌐 `all`, 🌐 `all-flat`.
 
 <!-- end auto-generated rule header -->
 
