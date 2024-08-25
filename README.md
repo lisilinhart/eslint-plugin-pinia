@@ -118,20 +118,15 @@ export default [
 
 <!-- begin auto-generated rules list -->
 
-💼 Configurations enabled in.\
-⚠️ Configurations set to warn in.\
-🚫 Configurations disabled in.\
-🌐 Set in the `all` configuration.\
-✅ Set in the `recommended` configuration.
-
-| Name                                                                                         | Description                                                                                | 💼   | ⚠️ | 🚫 |
-| :------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------- | :--- | :- | :- |
-| [never-export-initialized-store](docs/rules/never-export-initialized-store.md)               | Never export an initialized named or default store.                                        | 🌐 ✅ |    |    |
-| [no-duplicate-store-ids](docs/rules/no-duplicate-store-ids.md)                               | Disallow duplicate store ids.                                                              | ✅    | 🌐 |    |
-| [no-return-global-properties](docs/rules/no-return-global-properties.md)                     | Disallows returning globally provided properties from Pinia stores.                        | ✅    | 🌐 |    |
-| [prefer-single-store-per-file](docs/rules/prefer-single-store-per-file.md)                   | Encourages defining each store in a separate file.                                         |      |    | 🌐 |
-| [prefer-use-store-naming-convention](docs/rules/prefer-use-store-naming-convention.md)       | Enforces the convention of naming stores with the prefix `use` followed by the store name. |      | 🌐 |    |
-| [require-setup-store-properties-export](docs/rules/require-setup-store-properties-export.md) | In setup stores all state properties must be exported.                                     | ✅    | 🌐 |    |
+| Name                                                                                         | Description                                                                                |
+| :------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------- |
+| [never-export-initialized-store](docs/rules/never-export-initialized-store.md)               | Never export an initialized named or default store.                                        |
+| [no-duplicate-store-ids](docs/rules/no-duplicate-store-ids.md)                               | Disallow duplicate store ids.                                                              |
+| [no-return-global-properties](docs/rules/no-return-global-properties.md)                     | Disallows returning globally provided properties from Pinia stores.                        |
+| [no-store-to-refs-in-store](docs/rules/no-store-to-refs-in-store.md)                         | Disallow use of storeToRefs inside defineStore                                             |
+| [prefer-single-store-per-file](docs/rules/prefer-single-store-per-file.md)                   | Encourages defining each store in a separate file.                                         |
+| [prefer-use-store-naming-convention](docs/rules/prefer-use-store-naming-convention.md)       | Enforces the convention of naming stores with the prefix `use` followed by the store name. |
+| [require-setup-store-properties-export](docs/rules/require-setup-store-properties-export.md) | In setup stores all state properties must be exported.                                     |
 
 <!-- end auto-generated rules list -->
 

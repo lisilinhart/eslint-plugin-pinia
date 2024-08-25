@@ -1,6 +1,4 @@
-# Disallows returning globally provided properties from Pinia stores (`pinia/no-store-to-refs-in-store`)
-
-💼⚠️ This rule is enabled in the ✅ `recommended` config. This rule _warns_ in the 🌐 `all` config.
+# Disallow use of storeToRefs inside defineStore (`pinia/no-store-to-refs-in-store`)
 
 <!-- end auto-generated rule header -->
 
