@@ -39,7 +39,7 @@
 	},
 	"scripts": {
 		"build": "unbuild",
-		"update": "tsx scripts/update",
+		"update": "tsx scripts/update && npm run update:eslint-docs",
 		"lint:md": "markdownlint \"**/*.md\" --fix",
 		"lint:eslint-docs": "npm run build && eslint-doc-generator --check",
 		"lint:js": "eslint . --fix",
@@ -49,6 +49,7 @@
 		"stub": "unbuild --stub",
 		"test:ci": "vitest run",
 		"test": "vitest",
+		"init:eslint-docs": "npm run build && eslint-doc-generator --init-rule-docs",
 		"update:eslint-docs": "npm run build && eslint-doc-generator",
 		"tsc": "tsc --noEmit",
 		"prepare": "husky",

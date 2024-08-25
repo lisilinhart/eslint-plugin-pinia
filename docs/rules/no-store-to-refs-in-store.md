@@ -1,5 +1,7 @@
 # Disallow use of storeToRefs inside defineStore (`pinia/no-store-to-refs-in-store`)
 
+💼⚠️ This rule is enabled in the following configs: ✅ `recommended`, `recommended-flat`. This rule _warns_ in the following configs: 🌐 `all`, `all-flat`.
+
 <!-- end auto-generated rule header -->
 
 ## Rule Details

@@ -1,5 +1,7 @@
 # Never export an initialized named or default store (`pinia/never-export-initialized-store`)
 
+💼⚠️ This rule is enabled in the following configs: ✅ `recommended`, `recommended-flat`. This rule _warns_ in the following configs: 🌐 `all`, `all-flat`.
+
 <!-- end auto-generated rule header -->
 
 Here's the documentation for the `never-export-initialized-store` rule:

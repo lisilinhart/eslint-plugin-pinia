@@ -40,7 +40,7 @@ function createConfig<T extends Record<string, unknown>>(
   ).reduce((acc, ruleName) => {
     return {
       ...acc,
-      [`${name}/${ruleName}`]: rules[ruleName]
+      [`${name}/${ruleName}`]: _rules[ruleName]
     }
   }, {})
   if (flat) {

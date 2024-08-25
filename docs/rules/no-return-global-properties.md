@@ -1,5 +1,7 @@
 # Disallows returning globally provided properties from Pinia stores (`pinia/no-return-global-properties`)
 
+💼⚠️ This rule is enabled in the following configs: ✅ `recommended`, `recommended-flat`. This rule _warns_ in the following configs: 🌐 `all`, `all-flat`.
+
 <!-- end auto-generated rule header -->
 
 ## Rule Details
