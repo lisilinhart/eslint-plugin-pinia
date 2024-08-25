@@ -4,6 +4,7 @@ import { RULE_NAME as preferNamingConventionName } from './rules/prefer-use-stor
 import { RULE_NAME as preferSingleStoreName } from './rules/prefer-single-store-per-file'
 import { RULE_NAME as noReturnGlobalPropertiesName } from './rules/no-return-global-properties'
 import { RULE_NAME as noDuplicateStoreIdsName } from './rules/no-duplicate-store-ids'
+import { RULE_NAME as noStoreToRefs } from './rules/no-store-to-refs-in-store'
 import rules from './rules/index'
 
 const plugin = {
@@ -11,23 +12,28 @@ const plugin = {
 }
 
 const allRules = {
-  [requireSetupStorePropsName]: 'warn',
   [neverExportInitializedStoreName]: 'warn',
+  [noDuplicateStoreIdsName]: 'warn',
+  [noReturnGlobalPropertiesName]: 'warn',
+  [noStoreToRefs]: 'warn',
   [preferNamingConventionName]: 'warn',
   [preferSingleStoreName]: 'off',
-  [noReturnGlobalPropertiesName]: 'warn',
-  [noDuplicateStoreIdsName]: 'warn'
+  [requireSetupStorePropsName]: 'warn'
 }
 
 const recommended = {
-  [requireSetupStorePropsName]: 'error',
-  [noReturnGlobalPropertiesName]: 'error',
-  [noDuplicateStoreIdsName]: 'error',
   [neverExportInitializedStoreName]: 'error',
-  [preferNamingConventionName]: 'warn'
+  [noDuplicateStoreIdsName]: 'error',
+  [noReturnGlobalPropertiesName]: 'error',
+  [noStoreToRefs]: 'error',
+  [preferNamingConventionName]: 'warn',
+  [requireSetupStorePropsName]: 'error'
 }
 
-function createConfig<T extends Record<string, any>>(_rules: T, flat = false) {
+function createConfig<T extends Record<string, unknown>>(
+  _rules: T,
+  flat = false
+) {
   const name = 'pinia'
   const constructedRules: Record<`pinia/${string}`, string> = Object.keys(
     _rules

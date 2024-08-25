@@ -7,6 +7,6 @@ const target = resolve(__dirname, '..', 'fixtures')
 it.concurrent('fixtures/no-duplicate-store-ids', { fails: true }, async () => {
   await execa('npx', ['eslint', 'no-duplicate-store-ids'], {
     cwd: target,
-    stdio: 'pipe',
+    stdio: 'pipe'
   })
 })
