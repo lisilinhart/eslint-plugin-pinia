@@ -11,6 +11,15 @@ ruleTester.run(RULE_NAME, rule, {
         const { myRef } = storeToRefs(myStore);
         console.log(myRef.value);
       `
+    },
+    {
+      code: `
+        import { storeToRefs } from 'pinia';
+        import { useMyStore } from './my-store';
+        const myStore = useMyStore();
+        const { myRef } = storeToRefs(myStore);
+        const computedRef = computed(() => myRef.value);
+      `
     }
   ],
   invalid: [
@@ -20,7 +29,7 @@ ruleTester.run(RULE_NAME, rule, {
         import { useMyStore } from './my-store';
         const myStore = useMyStore();
         const { myRef } = storeToRefs(myStore);
-        console.log(myRef);
+        const computedRef = computed(() => myRef);
       `,
       errors: [{ messageId: 'noUnwrappedStoreRefs' }]
     }
