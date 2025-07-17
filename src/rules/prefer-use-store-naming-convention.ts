@@ -27,7 +27,8 @@ export default createEslintRule<Options, MESSAGE_IDS>({
             type: 'string',
             default: ''
           }
-        }
+        },
+        additionalProperties: false
       }
     ],
     messages: {
