@@ -5,6 +5,7 @@ import { RULE_NAME as preferSingleStoreName } from './rules/prefer-single-store-
 import { RULE_NAME as noReturnGlobalPropertiesName } from './rules/no-return-global-properties'
 import { RULE_NAME as noDuplicateStoreIdsName } from './rules/no-duplicate-store-ids'
 import { RULE_NAME as noStoreToRefs } from './rules/no-store-to-refs-in-store'
+import { RULE_NAME as noUnwrappedStoreRefsName } from './rules/no-unwrapped-store-refs'
 import rules from './rules/index'
 
 const plugin = {
@@ -16,6 +17,7 @@ const allRules = {
   [noDuplicateStoreIdsName]: 'warn',
   [noReturnGlobalPropertiesName]: 'warn',
   [noStoreToRefs]: 'warn',
+  [noUnwrappedStoreRefsName]: 'warn',
   [preferNamingConventionName]: 'warn',
   [preferSingleStoreName]: 'off',
   [requireSetupStorePropsName]: 'warn'
@@ -26,6 +28,7 @@ const recommended = {
   [noDuplicateStoreIdsName]: 'error',
   [noReturnGlobalPropertiesName]: 'error',
   [noStoreToRefs]: 'error',
+  [noUnwrappedStoreRefsName]: 'error',
   [preferNamingConventionName]: 'warn',
   [requireSetupStorePropsName]: 'error'
 }

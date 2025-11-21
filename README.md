@@ -49,9 +49,7 @@ Then configure the rules you want to use under the rules section.
 // .eslintrc [Legacy Config]
 {
   "rules": {
-    "pinia/require-export-define-store": [
-      "warn"
-    ]
+    "pinia/require-export-define-store": ["warn"]
   }
 }
 ```
@@ -66,7 +64,7 @@ export default [
       pinia
     },
     rules: {
-      "pinia/require-export-define-store": ["warn"]
+      'pinia/require-export-define-store': ['warn']
     }
   }
 ]
@@ -87,9 +85,7 @@ To use the recommended configuration, extend it in your `.eslintrc` or `eslint.c
 // eslint.config.js
 import pinia from 'eslint-plugin-pinia'
 
-export default [
-  pinia.configs["recommended-flat"],
-]
+export default [pinia.configs['recommended-flat']]
 ```
 
 All recommend rules will be set to error by default. You can however disable some rules by setting turning them `off` in your configuration file or by setting them to `warn` in your configuration file.
@@ -109,9 +105,7 @@ To use the all configuration, extend it in your `.eslintrc` or `eslint.config.js
 // eslint.config.js
 import pinia from 'eslint-plugin-pinia'
 
-export default [
-  pinia.configs["all-flat"],
-]
+export default [pinia.configs['all-flat']]
 ```
 
 ## Rules
@@ -132,6 +126,7 @@ export default [
 | [no-duplicate-store-ids](docs/rules/no-duplicate-store-ids.md)                               | Disallow duplicate store ids.                                                              | ✅ ✅ | 🌐 🌐     |       |
 | [no-return-global-properties](docs/rules/no-return-global-properties.md)                     | Disallows returning globally provided properties from Pinia stores.                        | ✅ ✅ | 🌐 🌐     |       |
 | [no-store-to-refs-in-store](docs/rules/no-store-to-refs-in-store.md)                         | Disallow use of storeToRefs inside defineStore                                             | ✅ ✅ | 🌐 🌐     |       |
+| [no-unwrapped-store-refs](docs/rules/no-unwrapped-store-refs.md)                             | Disallow using refs from a store without unwrapping them.                                  |     |           |       |
 | [prefer-single-store-per-file](docs/rules/prefer-single-store-per-file.md)                   | Encourages defining each store in a separate file.                                         |     |           | 🌐 🌐 |
 | [prefer-use-store-naming-convention](docs/rules/prefer-use-store-naming-convention.md)       | Enforces the convention of naming stores with the prefix `use` followed by the store name. |     | 🌐 🌐 ✅ ✅ |       |
 | [require-setup-store-properties-export](docs/rules/require-setup-store-properties-export.md) | In setup stores all state properties must be exported.                                     | ✅ ✅ | 🌐 🌐     |       |
